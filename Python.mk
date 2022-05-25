@@ -1,6 +1,6 @@
 # russellane/Python.mk
 
-build::		__pypackages__ ctags lint test coverage doc
+build::		__pypackages__ ctags lint test doc
 		pdm build
 
 bump_micro::	_bump_micro clean build
