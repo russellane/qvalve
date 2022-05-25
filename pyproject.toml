@@ -1,0 +1,88 @@
+[project]
+name = "qvalve"
+version = "1.0.0"
+description = "Query Valve Main and Game Servers"
+authors = [
+    {name = "Russel Lane", email = "russel@rlane.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+keywords = ["tf2", "team-fortress-2", "steam", "valve"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Games/Entertainment :: First Person Shooters"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "bootstrap-flask>=2.0.1",
+    "flask-table>=0.5.0",
+    "flask-wtf>=1.0.0",
+    "flask>=2.0.3",
+    "fuzzywuzzy>=0.18.0",
+    "libcli>=1.0.0",
+    "loguru>=0.6.0",
+    "pandas>=1.4.1",
+    "python-levenshtein>=0.12.2",
+    "steam>=1.2.0",
+    "tf2mon>=1.0.0",
+    "wtforms>=3.0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/russellane/qvalve"
+
+[project.scripts]
+qvalve = "qvalve.cli:main"
+
+[project.optional-dependencies]
+[tool.pdm]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=22.1.0",
+    "flake8-bugbear>=22.1.11",
+    "flake8-pydocstyle>=0.2.0",
+    "flake8-pylint>=0.1.3",
+    "flake8-pytest-style>=1.6.0",
+    "flake8-simplify>=0.18.0",
+    "flake8>=4.0.1",
+    "isort>=5.10.1",
+    "pytest-cov>=3.0.0",
+    "pytest>=7.0.1",
+]
+
+[tool.black]
+line-length = "97"
+
+[tool.isort]
+line_length = "97"
+profile = "black"
+
+[tool.pylint.format]
+max-line-length = "97"
+
+[tool.pylint.messages_control]
+enable = ["useless-suppression"]
+fail-on = ["I0021"]             # useless-suppression
+disable = [
+    "C0330", "C0326",           # black
+]
+good-names = [
+    "k", "v",
+]
+
+[tool.pydocstyle]
+convention = "google"
+add-ignore = [
+    "D105",     # pep257 numpy google   # Missing docstring in magic method
+    "D202",     # pep257 numpy google   # No blank lines allowed after function docstring
+]
+
+[build-system]
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
+
+# vim: set ts=4 sw=4 et:

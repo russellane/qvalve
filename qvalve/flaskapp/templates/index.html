@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block styles %}
+{{ super() }}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<script src="{{url_for('static', filename='app.js')}}"></script>
+{% endblock %}
+
+{% block title %}
+  <title>Query Valve Servers</title>
+{% endblock %}
+
+<!-- --------------------------------------------------------------------- -->
+
+{% block content %}
+<div class="container">
+
+  {% block header %}{% endblock %}
+
+  <h1>Query Valve Servers</h1>
+
+  <form action="" method="post" novalidate>
+    {{ form.csrf_token }}
+    {# <table class="table table-sm table-condensed table-bordered table-striped">
+      <tbody>
+        {% for field in form %}
+            <tr>
+                <th>{{ field.label }}</th>
+                <td>{{ field }}
+                    {% for error in field.errors %}
+                    <span class='bg-danger'>[{{ error }}]</span>
+                    {% endfor %}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h3>bobo</h3> #}
+    <table class="table table-sm table-condensed table-bordered table-striped">
+      <tbody>
+        <!-- search engine -->
+        <tr>
+          <th>{{ form.max_threads.label }}</th>
+          <td>{{ form.max_threads }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.debug.label }}</th>
+          <td>{{ form.debug }}</td>
+        </tr>
+        <!-- stage1 filters -->
+        <tr>
+          <th>{{ form.max_servers.label }}</th>
+          <td>{{ form.max_servers }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.regions.label }}</th>
+          <td>{{ form.regions }}</td>
+        </tr>
+        </tr>
+          <th>{{ form.appid.label }}</th>
+          <td>{{ form.appid }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.dedicated.label }}</th>
+          <td>
+            <div class="btn-group" role="group">
+            <!-- div class="form-check form-check-inline" -->
+              <input type="radio" class="btn-check" name="dedicated" id="dedicated-0" value="None" autocomplete="off"
+                checked>
+              <label class="btn btn-outline-primary" for="dedicated-0">Undefined</label>
+
+              <input type="radio" class="btn-check" name="dedicated" id="dedicated-1" value="True" autocomplete="off">
+              <label class="btn btn-outline-primary" for="dedicated-1">True</label>
+
+              <input type="radio" class="btn-check" name="dedicated" id="dedicated-2" value="False" autocomplete="off">
+              <label class="btn btn-outline-primary" for="dedicated-2">False</label>
+            </div>
+          </td>
+          <!-- td>{{ form.dedicated }}</td -->
+        </tr>
+        <tr>
+          <th>{{ form.secure.label }}</th>
+          <td>{{ form.secure }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.password.label }}</th>
+          <td>{{ form.password }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.empty.label }}</th>
+          <td>{{ form.empty }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.full.label }}</th>
+          <td>{{ form.full }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.noplayers.label }}</th>
+          <td>{{ form.noplayers }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.map_name.label }}</th>
+          <td>{{ form.map_name }}</td>
+        </tr>
+        <!-- stage2 filters -->
+        <tr>
+          <th>{{ form.map_prefix.label }}</th>
+          <td>{{ form.map_prefix }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.min_players.label }}</th>
+          <td>{{ form.min_players }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.max_bots.label }}</th>
+          <td>{{ form.max_bots }}</td>
+        </tr>
+        <tr>
+          <th>{{ form.max_ping.label }}</th>
+          <td>{{ form.max_ping }}</td>
+        </tr>
+        <!-- submit -->
+        <tr>
+          <th colspan="2">
+            <center>{{ form.submit }}</center>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+  {% if datalen %}
+  <h2>Found {{ datalen }} Servers</h2>
+  {{ data|safe }}
+  {% endif %}
+
+</div>
+{% endblock %}
+
+<!-- --------------------------------------------------------------------- -->
+
+{% block scripts %}
+<script type=text/javascript>
+servers = document.getElementById('servers')
+if (servers) {
+  add_event_listener(servers)
+}
+</script>
+{% endblock %}
+
+<!-- vim: set ts=2 sw=2 tw=0 et :-->

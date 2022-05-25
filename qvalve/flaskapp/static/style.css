@@ -1,0 +1,71 @@
+form table ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  /*width: 26em;*/
+}
+
+form table li {
+  display: inline-block;
+  margin: 0;
+  padding: 0px 5px 0px 0px;
+}
+
+form table tr th {
+  text-align: right
+}
+
+/*
+table#servers td {
+  white-space: nowrap;
+}
+*/
+
+table,
+table tr,
+table tr th,
+table tr td {
+  padding: 0px 2px !important;
+  white-space: nowrap;
+}
+
+h1, h2  { color: #9e7a2e; }
+h1, h2  { margin-bottom: 0; }
+
+/*----------------------------------------------------------------------------*/
+
+/* table#servers tr:hover  { background-color: #aca424 } */
+/* table#servers tr:hover  { font-style: italic } */
+/* table#servers tr[addr]:hover  { text-decoration: underline } */
+/* table#servers tr:not([class=players]:hover  { text-decoration: underline } */
+
+.server:hover  { text-decoration: underline }
+
+/* table#servers tr:not([addr]) td ul li { */
+table#servers tr td ul li {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+}
+
+table.a2s_players {
+    padding: 0;
+    margin: 0;
+}
+
+/*
+.players {
+    font-family: 'sans-serif';
+}
+*/
+
+
+table#servers tr[_connected],
+table#servers tr[_connected] td {
+    font-weight: bold;
+}
+
+.even                   { background-color: #6e7757 }
+.odd                    { background-color: #6d553c }
+
+/* vim: set ts=4 sw=4 tw=0 et : */

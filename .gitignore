@@ -1,0 +1,10 @@
+*.egg-info/
+*.swp
+.coverage
+.junk/
+.pdm.toml
+.pytest_cache/
+__pycache__/
+__pypackages__/
+dist/
+tags
