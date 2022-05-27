@@ -6,7 +6,47 @@ from qvalve.cli import main
 
 slow = pytest.mark.skipif(not os.environ.get("SLOW"), reason="slow")
 
-# run at least one.... @slow
+
+def test_version():
+    with pytest.raises(SystemExit) as err:
+        main(["--version"])
+    assert err.value.code == 0
+
+
+def test_help():
+    with pytest.raises(SystemExit) as err:
+        main(["--help"])
+    assert err.value.code == 0
+
+
+def test_md_help():
+    with pytest.raises(SystemExit) as err:
+        main(["--md-help"])
+    assert err.value.code == 0
+
+
+def test_long_help():
+    with pytest.raises(SystemExit) as err:
+        main(["--long-help"])
+    assert err.value.code == 2
+
+
+def test_bogus_option():
+    with pytest.raises(SystemExit) as err:
+        main(["--bogus-option"])
+    assert err.value.code == 2
+
+
+def test_print_config():
+    with pytest.raises(SystemExit) as err:
+        main(["--print-config"])
+    assert err.value.code == 0
+
+
+def test_print_url():
+    with pytest.raises(SystemExit) as err:
+        main(["--print-url"])
+    assert err.value.code == 0
 
 
 def test_no_args():
