@@ -13,8 +13,8 @@
     
 Search `Valve`s Main server for Game servers. Integrated with `tf2mon`s
 hacker-database to identify known cheaters on game servers. Click on a
-server to show/hide its players; double-click on server to subsequently
-connect to server when `F12` is pressed in-game.
+server to show/hide its players; `Ctrl-Click` on server (or players) to
+subsequently connect to that server when `F12` is pressed in-game.
 
 #### Options
     --max-threads NUM   Run `NUM` threads for game server comms (default:
