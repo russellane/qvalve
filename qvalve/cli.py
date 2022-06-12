@@ -43,7 +43,14 @@ class QvalveCLI(BaseCLI):
 
         self.parser = self.ArgumentParser(
             prog=__package__,
-            description="Search Valve's Main server for Game servers.",
+            description=self.dedent(
+                """
+    Search `Valve`s Main server for Game servers. Integrated with `tf2mon`s
+    hacker-database to identify known cheaters on game servers. Click on a
+    server to show/hide its players; double-click on server to subsequently
+    connect to server when `F12` is pressed in-game.
+                """
+            ),
         )
 
     def set_defaults(self):
@@ -258,7 +265,7 @@ class QvalveCLI(BaseCLI):
     def main(self) -> None:
         """Command line interface entry point (method)."""
 
-        hackers = tf2mon.hacker.Hackers()
+        hackers = tf2mon.hacker.HackerManager()
         hackers.load_gamebots(self.config["gamebots"])
         qvalve.gameserver.GameServer.configure(self.options, hackers)
 

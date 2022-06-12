@@ -23,7 +23,6 @@ summary = "An abstract syntax tree for Python with inference support."
 dependencies = [
     "lazy-object-proxy>=1.4.0",
     "setuptools>=20.0",
-    "typing-extensions>=3.10; python_version < \"3.10\"",
     "wrapt<2,>=1.11",
 ]
 
@@ -59,7 +58,6 @@ dependencies = [
     "pathspec>=0.9.0",
     "platformdirs>=2",
     "tomli>=1.1.0; python_version < \"3.11\"",
-    "typing-extensions>=3.10.0.0; python_version < \"3.10\"",
 ]
 
 [[package]]
@@ -118,7 +116,7 @@ requires_python = ">=3.7"
 summary = "Code coverage measurement for Python"
 dependencies = [
     "coverage>=5.2.1",
-    "tomli; python_version < \"3.11\"",
+    "tomli; python_full_version <= \"3.11.0a6\"",
 ]
 
 [[package]]
@@ -201,7 +199,6 @@ dependencies = [
     "Jinja2>=3.0",
     "Werkzeug>=2.0",
     "click>=8.0",
-    "importlib-metadata>=3.6.0; python_version < \"3.10\"",
     "itsdangerous>=2.0",
 ]
 
@@ -252,15 +249,6 @@ name = "idna"
 version = "3.3"
 requires_python = ">=3.5"
 summary = "Internationalized Domain Names in Applications (IDNA)"
-
-[[package]]
-name = "importlib-metadata"
-version = "4.11.4"
-requires_python = ">=3.7"
-summary = "Read metadata from Python packages"
-dependencies = [
-    "zipp>=0.5",
-]
 
 [[package]]
 name = "iniconfig"
@@ -341,9 +329,6 @@ version = "1.4.2"
 requires_python = ">=3.8"
 summary = "Powerful data structures for data analysis, time series, and statistics"
 dependencies = [
-    "numpy>=1.18.5; platform_machine != \"aarch64\" and platform_machine != \"arm64\" and python_version < \"3.10\"",
-    "numpy>=1.19.2; platform_machine == \"aarch64\" and python_version < \"3.10\"",
-    "numpy>=1.20.0; platform_machine == \"arm64\" and python_version < \"3.10\"",
     "numpy>=1.21.0; python_version >= \"3.10\"",
     "python-dateutil>=2.8.1",
     "pytz>=2020.1",
@@ -408,7 +393,7 @@ summary = "passive checker of Python programs"
 [[package]]
 name = "pylint"
 version = "2.13.9"
-requires_python = ">=3.6.2"
+requires_python = ">=3.7.2"
 summary = "python code static checker"
 dependencies = [
     "astroid<=2.12.0-dev0,>=2.11.5",
@@ -418,7 +403,7 @@ dependencies = [
     "mccabe<0.8,>=0.6",
     "platformdirs>=2.2.0",
     "tomli>=1.1.0; python_version < \"3.11\"",
-    "typing-extensions>=3.10.0; python_version < \"3.10\"",
+    "tomlkit>=0.10.1",
 ]
 
 [[package]]
@@ -489,8 +474,8 @@ dependencies = [
 
 [[package]]
 name = "rlane-libcli"
-version = "1.0.2"
-requires_python = ">=3.8"
+version = "1.0.3"
+requires_python = ">=3.10"
 summary = "Command line interface framework"
 dependencies = [
     "ansicolors>=1.1.8",
@@ -500,8 +485,8 @@ dependencies = [
 
 [[package]]
 name = "rlane-libcurses"
-version = "1.0.1"
-requires_python = ">=3.8"
+version = "1.0.4"
+requires_python = ">=3.10"
 summary = "Curses based boxes, menus, loggers"
 dependencies = [
     "loguru>=0.6.0",
@@ -538,20 +523,26 @@ dependencies = [
 
 [[package]]
 name = "tf2mon"
-version = "1.0.1"
-requires_python = ">=3.8"
+version = "1.0.27"
+requires_python = ">=3.10"
 summary = "Team Fortress 2 Console Monitor"
 dependencies = [
     "fuzzywuzzy>=0.18.0",
-    "humanize>=4.0.0",
+    "humanize>=4.1.0",
     "loguru>=0.6.0",
     "playsound>=1.3.0",
     "python-levenshtein>=0.12.2",
-    "rlane-libcli>=1.0.2",
-    "rlane-libcurses>=1.0.1",
+    "rlane-libcli>=1.0.3",
+    "rlane-libcurses>=1.0.4",
     "steam!=1.3.3,>=1.3.0",
     "xdg>=5.1.1",
 ]
+
+[[package]]
+name = "toml"
+version = "0.10.2"
+requires_python = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+summary = "Python Library for Tom's Obvious, Minimal Language"
 
 [[package]]
 name = "tomli"
@@ -560,10 +551,10 @@ requires_python = ">=3.7"
 summary = "A lil' TOML parser"
 
 [[package]]
-name = "typing-extensions"
-version = "4.2.0"
-requires_python = ">=3.7"
-summary = "Backported and Experimental Type Hints for Python 3.7+"
+name = "tomlkit"
+version = "0.11.0"
+requires_python = ">=3.6,<4.0"
+summary = "Style preserving TOML library"
 
 [[package]]
 name = "urllib3"
@@ -609,15 +600,9 @@ version = "5.1.1"
 requires_python = ">=3.6,<4.0"
 summary = "Variables defined by the XDG Base Directory Specification"
 
-[[package]]
-name = "zipp"
-version = "3.8.0"
-requires_python = ">=3.7"
-summary = "Backport of pathlib-compatible object wrapper for zip files"
-
 [metadata]
 lock_version = "3.1"
-content_hash = "sha256:23c4829edee34eea1a5a436c86055102dd59f740f3415278e47aff9fa8248b23"
+content_hash = "sha256:398913df3e173a455e8d032c6ea1feaaccc83cf90955fd888650ada2b5f2748d"
 
 [metadata.files]
 "ansicolors 1.1.8" = [
@@ -798,10 +783,6 @@ content_hash = "sha256:23c4829edee34eea1a5a436c86055102dd59f740f3415278e47aff9fa
 "idna 3.3" = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
-]
-"importlib-metadata 4.11.4" = [
-    {file = "importlib_metadata-4.11.4-py3-none-any.whl", hash = "sha256:c58c8eb8a762858f49e18436ff552e83914778e50e9d2f1660535ffb364552ec"},
-    {file = "importlib_metadata-4.11.4.tar.gz", hash = "sha256:5d26852efe48c0a32b0509ffbc583fda1a2266545a78d104a6f4aff3db17d700"},
 ]
 "iniconfig 1.1.1" = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
@@ -1054,13 +1035,13 @@ content_hash = "sha256:23c4829edee34eea1a5a436c86055102dd59f740f3415278e47aff9fa
     {file = "requests-2.27.1-py2.py3-none-any.whl", hash = "sha256:f22fa1e554c9ddfd16e6e41ac79759e17be9e492b3587efa038054674760e72d"},
     {file = "requests-2.27.1.tar.gz", hash = "sha256:68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61"},
 ]
-"rlane-libcli 1.0.2" = [
-    {file = "rlane_libcli-1.0.2-py3-none-any.whl", hash = "sha256:65add18dec61f27e89fe61ef77c7729c4dafd229640865ac8ce8dff6100efbbe"},
-    {file = "rlane-libcli-1.0.2.tar.gz", hash = "sha256:f5fb9a8c0199484ae68a5566ad7894d6748235bd1d42317a480a2b686966578b"},
+"rlane-libcli 1.0.3" = [
+    {file = "rlane_libcli-1.0.3-py3-none-any.whl", hash = "sha256:80db0db729434d13a70ac4d0d1f1e6c6c1485b7e8918129734524a7a4ef151c1"},
+    {file = "rlane-libcli-1.0.3.tar.gz", hash = "sha256:2d0139f3b09c62b2645adf92e2954dee843cecf53eee8268d98e7663ef30f634"},
 ]
-"rlane-libcurses 1.0.1" = [
-    {file = "rlane_libcurses-1.0.1-py3-none-any.whl", hash = "sha256:7ffdd67eedd961a8ea45e3837477dc3557fe0e5d798d971b73839ca6a2c0425c"},
-    {file = "rlane-libcurses-1.0.1.tar.gz", hash = "sha256:d4bbe072e4a5fe065c38130b404237f2c4e4219006c89e8e4c48be1538f246ba"},
+"rlane-libcurses 1.0.4" = [
+    {file = "rlane_libcurses-1.0.4-py3-none-any.whl", hash = "sha256:292d87a94450e10aeddde926a2cf22d97662888bd4b455c41f8a721b40e41f0b"},
+    {file = "rlane-libcurses-1.0.4.tar.gz", hash = "sha256:c6988c8aa54f86ee15ece89f2692e3f9d729c3237c6417e9b0d750f2981bb9a3"},
 ]
 "setuptools 62.3.2" = [
     {file = "setuptools-62.3.2-py3-none-any.whl", hash = "sha256:68e45d17c9281ba25dc0104eadd2647172b3472d9e01f911efa57965e8d51a36"},
@@ -1077,17 +1058,21 @@ content_hash = "sha256:23c4829edee34eea1a5a436c86055102dd59f740f3415278e47aff9fa
 "steam 1.3.0" = [
     {file = "steam-1.3.0.tar.gz", hash = "sha256:a40e0295e73259da2995ddbb2e7a06069db2948bc232f72f28cc7079a8737516"},
 ]
-"tf2mon 1.0.1" = [
-    {file = "tf2mon-1.0.1-py3-none-any.whl", hash = "sha256:72ee50168eb3a938af104d9c6c0c4c389c4b8c9134b13ad681ab3063be9b55d7"},
-    {file = "tf2mon-1.0.1.tar.gz", hash = "sha256:8bfbb427eee83f2e51c82535c005e8b4fe066db5b39ebbd3c4c87d48ba9b05db"},
+"tf2mon 1.0.27" = [
+    {file = "tf2mon-1.0.27-py3-none-any.whl", hash = "sha256:a25caeb460fe886a65146df8b48a3f84212a8ea3e2f6a631be9601057024958c"},
+    {file = "tf2mon-1.0.27.tar.gz", hash = "sha256:55a90da6c3a127461229e923310ea9dd0a30007e0ae86d1356c1a45995b25bfb"},
+]
+"toml 0.10.2" = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
 ]
 "tomli 2.0.1" = [
     {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
     {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
 ]
-"typing-extensions 4.2.0" = [
-    {file = "typing_extensions-4.2.0-py3-none-any.whl", hash = "sha256:6657594ee297170d19f67d55c05852a874e7eb634f4f753dbd667855e07c1708"},
-    {file = "typing_extensions-4.2.0.tar.gz", hash = "sha256:f1c24655a0da0d1b67f07e17a5e6b2a105894e6824b92096378bb3668ef02376"},
+"tomlkit 0.11.0" = [
+    {file = "tomlkit-0.11.0-py3-none-any.whl", hash = "sha256:0f4050db66fd445b885778900ce4dd9aea8c90c4721141fde0d6ade893820ef1"},
+    {file = "tomlkit-0.11.0.tar.gz", hash = "sha256:71ceb10c0eefd8b8f11fe34e8a51ad07812cb1dc3de23247425fbc9ddc47b9dd"},
 ]
 "urllib3 1.26.9" = [
     {file = "urllib3-1.26.9-py2.py3-none-any.whl", hash = "sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14"},
@@ -1178,8 +1163,4 @@ content_hash = "sha256:23c4829edee34eea1a5a436c86055102dd59f740f3415278e47aff9fa
 "xdg 5.1.1" = [
     {file = "xdg-5.1.1-py3-none-any.whl", hash = "sha256:865a7b56ed1d4cd2fce2ead1eddf97360843619757f473cd90b75f1817ca541d"},
     {file = "xdg-5.1.1.tar.gz", hash = "sha256:aa619f26ccec6088b2a6018721d4ee86e602099b24644a90a8d3308a25acd06c"},
-]
-"zipp 3.8.0" = [
-    {file = "zipp-3.8.0-py3-none-any.whl", hash = "sha256:c4f6e5bbf48e74f7a38e7cc5b0480ff42b0ae5178957d564d18932525d5cf099"},
-    {file = "zipp-3.8.0.tar.gz", hash = "sha256:56bf8aadb83c24db6c4b577e13de374ccfb67da2078beba1d037c17980bf43ad"},
 ]

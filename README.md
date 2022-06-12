@@ -8,9 +8,13 @@
            [--map-prefix PREFIX] [--min-players NUM] [--no-max-players]
            [--max-ping NUM] [--no-mm-strict-1] [--web-server] [-h] [-v]
            [-V] [--config FILE] [--print-config] [--print-url]
+           [--completion [SHELL]]
            [ADDR ...]
     
-Search Valve's Main server for Game servers.
+Search `Valve`s Main server for Game servers. Integrated with `tf2mon`s
+hacker-database to identify known cheaters on game servers. Click on a
+server to show/hide its players; double-click on server to subsequently
+connect to server when `F12` is pressed in-game.
 
 #### Options
     --max-threads NUM   Run `NUM` threads for game server comms (default:
@@ -56,3 +60,6 @@ Search Valve's Main server for Game servers.
     --config FILE       Use config `FILE` (default: `~/.qvalve.toml`).
     --print-config      Print effective config and exit.
     --print-url         Print project url and exit.
+    --completion [SHELL]
+                        Print completion scripts for `SHELL` and exit
+                        (default: `bash`).
