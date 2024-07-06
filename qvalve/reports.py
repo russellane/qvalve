@@ -2,6 +2,7 @@
 
 Functions to print text reports to stdout.
 """
+
 # -------------------------------------------------------------------------------
 
 from collections import defaultdict

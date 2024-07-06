@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
-import tf2mon.hacker
+# import tf2mon.hacker
 from libcli import BaseCLI
 from loguru import logger
 from steam.game_servers import MSRegion
@@ -265,8 +265,20 @@ class QvalveCLI(BaseCLI):
     def main(self) -> None:
         """Command line interface entry point (method)."""
 
-        hackers = tf2mon.hacker.HackerManager()
-        hackers.load_gamebots(self.config["gamebots"])
+        # hackers = tf2mon.hacker.HackerManager()
+        # hackers.load_gamebots(self.config["gamebots"])
+
+        class HackerManager:
+            """Docstring."""
+
+            # pylint: disable=too-few-public-methods
+            def lookup_name(self, name: str):
+                """Docstring."""
+                # pylint: disable=no-self-use
+                logger.info(f"HackerManager.lookup_name: {name!r}")
+
+        hackers = HackerManager()
+
         qvalve.gameserver.GameServer.configure(self.options, hackers)
 
         if self.options.web_server:

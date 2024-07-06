@@ -2,7 +2,7 @@
 *.swp
 .coverage
 .junk/
-.pdm.toml
+.pdm-python
 .pytest_cache/
 __pycache__/
 __pypackages__/

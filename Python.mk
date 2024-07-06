@@ -20,9 +20,10 @@ publish_test::
 publish_prod::
 		twine upload --verbose -r pypi dist/*
 
+PROJECT_NAME := $(shell sed -ne 's/^name = "\(.*\)"$$/\1/p' pyproject.toml)
 install::
-		-pipx uninstall $(PROJECT)
-		pipx install $(PROJECT)
+		-pipx uninstall $(PROJECT_NAME)
+		pipx install $(PROJECT_NAME)
 
 __pypackages__:
 		pdm install
@@ -54,7 +55,7 @@ cov_html::
 		xdg-open htmlcov/index.html
 
 clean::
-		rm -rf .coverage .pytest_cache __pypackages__ dist htmlcov tags 
+		rm -rf .coverage .pdm-build .pytest_cache __pypackages__ dist htmlcov tags 
 		find . -type f -name '*.py[co]' -delete
 		find . -type d -name __pycache__ -delete
 
