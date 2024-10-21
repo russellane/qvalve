@@ -2,7 +2,6 @@
 
 import sys
 from pathlib import Path
-from typing import List, Optional
 
 # import tf2mon.hacker
 from libcli import BaseCLI
@@ -19,7 +18,7 @@ class QvalveCLI(BaseCLI):
 
     config = {
         # name of config file.
-        "config-file": Path.home().joinpath(".qvalve.toml"),
+        "config-file": Path("~/.qvalve.toml"),
         # toml [section-name].
         "config-name": "qvalve",
         # application
@@ -274,7 +273,6 @@ class QvalveCLI(BaseCLI):
             # pylint: disable=too-few-public-methods
             def lookup_name(self, name: str):
                 """Docstring."""
-                # pylint: disable=no-self-use
                 logger.info(f"HackerManager.lookup_name: {name!r}")
 
         hackers = HackerManager()
@@ -294,6 +292,6 @@ class QvalveCLI(BaseCLI):
             qvalve.reports.search_mainserver(self.options)
 
 
-def main(args: Optional[List[str]] = None) -> None:
+def main(args: list[str] | None = None) -> None:
     """Command line interface entry point (function)."""
     return QvalveCLI(args).main()
