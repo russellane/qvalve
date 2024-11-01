@@ -19,13 +19,13 @@ requires-python = ">=3.10"
 dependencies = [
     "bootstrap-flask>=2.4.1",
     "flask-table>=0.5.0",
-    "flask-wtf>=1.2.1",
+    "flask-wtf>=1.2.2",
     "flask>=3.0.3",
     "loguru>=0.7.2",
     "pandas>=2.2.3",
-    "rlane-libcli>=1.0.6",
+    "rlane-libcli>=1.0.7",
     "steam>=1.4.4",
-    "wtforms>=3.1.2",
+    "wtforms>=3.2.1",
 ]
 
 [project.urls]
@@ -39,14 +39,14 @@ qvalve = "qvalve.cli:main"
 [tool.pdm.dev-dependencies]
 dev = [
     "black>=24.10.0",
-    "flake8-bugbear>=24.8.19",
+    "flake8-bugbear>=24.10.31",
     "flake8-pydocstyle>=0.2.4",
     "flake8-pylint>=0.2.1",
     "flake8-pytest-style>=2.0.0",
     "flake8-simplify>=0.21.0",
     "flake8>=7.1.1",
     "isort>=5.13.2",
-    "pytest-cov>=5.0.0",
+    "pytest-cov>=6.0.0",
     "pytest>=8.3.3",
 ]
 
