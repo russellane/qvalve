@@ -1,6 +1,6 @@
 [project]
 name = "qvalve"
-version = "1.0.2"
+version = "1.0.3"
 description = "Query Valve Main and Game Servers"
 authors = [
     {name = "Russel Lane", email = "russel@rlane.com"},
