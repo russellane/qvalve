@@ -12,6 +12,8 @@ import qvalve.flaskapp
 import qvalve.gameserver
 import qvalve.reports
 
+__all__ = ["QvalveCLI"]
+
 
 class QvalveCLI(BaseCLI):
     """Command line interface."""
@@ -294,4 +296,4 @@ class QvalveCLI(BaseCLI):
 
 def main(args: list[str] | None = None) -> None:
     """Command line interface entry point (function)."""
-    return QvalveCLI(args).main()
+    QvalveCLI(args).main()
