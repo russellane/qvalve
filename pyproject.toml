@@ -1,6 +1,6 @@
 [project]
 name = "qvalve"
-version = "1.0.3"
+version = "1.0.4"
 description = "Query Valve Main and Game Servers"
 authors = [
     {name = "Russel Lane", email = "russel@rlane.com"},
@@ -9,7 +9,7 @@ license = {text = "MIT"}
 readme = "README.md"
 keywords = ["tf2", "team-fortress-2", "steam", "valve"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: End Users/Desktop",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -20,10 +20,10 @@ dependencies = [
     "bootstrap-flask>=2.4.1",
     "flask-table>=0.5.0",
     "flask-wtf>=1.2.2",
-    "flask>=3.0.3",
+    "flask>=3.1.0",
     "loguru>=0.7.2",
     "pandas>=2.2.3",
-    "rlane-libcli>=1.0.7",
+    "rlane-libcli>=1.0.8",
     "steam>=1.4.4",
     "wtforms>=3.2.1",
 ]
