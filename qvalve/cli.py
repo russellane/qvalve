@@ -1,5 +1,6 @@
 """Command line interface."""
 
+import logging
 import sys
 from pathlib import Path
 
@@ -32,26 +33,25 @@ class QvalveCLI(BaseCLI):
     def init_logging(self, verbose: int) -> None:
         """Set loguru logging level based on `--verbose`."""
 
-        if not self.init_logging_called:
-            super().init_logging(verbose)
-            _ = ["INFO", "DEBUG", "TRACE"]
-            level = _[min(verbose, len(_) - 1)]
-            logger.remove()
-            logger.add(sys.stderr, level=level)
+        if logging.root.handlers:
+            return
+        super().init_logging(verbose)
+        _ = ["INFO", "DEBUG", "TRACE"]
+        level = _[min(verbose, len(_) - 1)]
+        logger.remove()
+        logger.add(sys.stderr, level=level)
 
     def init_parser(self) -> None:
         """Initialize argument parser."""
 
         self.parser = self.ArgumentParser(
             prog=__package__,
-            description=self.dedent(
-                """
+            description=self.dedent("""
     Search `Valve`s Main server for Game servers. Integrated with `tf2mon`s
     hacker-database to identify known cheaters on game servers. Click on a
     server to show/hide its players; `Ctrl-Click` on server (or players) to
     subsequently connect to that server when `F12` is pressed in-game.
-                """
-            ),
+                """),
         )
 
     def set_defaults(self):
