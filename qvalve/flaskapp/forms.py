@@ -162,7 +162,6 @@ class SearchForm(FlaskForm):
     max_bots = IntegerField("Max Bots", [validators.optional()], render_kw={"size": 4})
     max_ping = IntegerField("Max Ping", [validators.optional()], render_kw={"size": 4})
 
-    #
     submit = SubmitField("Search", render_kw={"class": "btn btn-primary btn-lg btn-block"})
 
 

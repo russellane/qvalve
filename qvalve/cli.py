@@ -246,7 +246,6 @@ class QvalveCLI(BaseCLI):
             help="where tf_mm_strict is not 1",
         )
 
-        #
         usage2 = self.parser.add_argument_group("Usage 2")
         usage2.add_argument(
             "addrs",
@@ -255,7 +254,6 @@ class QvalveCLI(BaseCLI):
             help="Query list of Game server addresses, where ADDR is `IP:PORTNO`",
         )
 
-        #
         usage3 = self.parser.add_argument_group("Usage 3")
         usage3.add_argument(
             "--web-server",
@@ -272,7 +270,6 @@ class QvalveCLI(BaseCLI):
         class HackerManager:
             """Docstring."""
 
-            # pylint: disable=too-few-public-methods
             def lookup_name(self, name: str):
                 """Docstring."""
                 logger.info(f"HackerManager.lookup_name: {name!r}")

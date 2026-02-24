@@ -22,7 +22,6 @@ class GameServer:
     https://developer.valvesoftware.com/wiki/Server_queries.
     """
 
-    # pylint: disable=too-many-instance-attributes
     # -------------------------------------------------------------------------------
 
     _hackerdb = None
@@ -63,7 +62,6 @@ class GameServer:
         self.server_addr = (host, port)
         self.addr = f"{host}:{port}"
 
-        #
         self.region = 9 if region is None else region
 
         # from `steam.game_servers.a2s_info`
@@ -95,7 +93,6 @@ class GameServer:
     # -------------------------------------------------------------------------------
 
     def __str__(self):
-
         string = f"{self.__class__.__name__}({self.addr!r}"
         if self.map_name:
             string += f", {self.map_name!r}"
@@ -113,7 +110,7 @@ class GameServer:
         }
         try:
             return json.dumps(serializable)
-        except Exception as err:  # pylint: disable=broad-except
+        except Exception as err:
             logger.error(err)
             pp(serializable)
             return {}
@@ -172,7 +169,6 @@ class GameServer:
         if self._debug:
             pp({"info": info})
 
-        #
         self.app_id = info["app_id"]
         self.server_type = info["server_type"]
         self.vac = info["vac"]
@@ -187,7 +183,6 @@ class GameServer:
         # cleanup server names
         self.server_name = "".join([x for x in info["name"] if x.isprintable()]).strip()
 
-        #
         return True
 
     # -------------------------------------------------------------------------------
@@ -225,7 +220,6 @@ class GameServer:
             [x["name"] for x in self.a2s_players if len(x["name"]) > 0], key=lambda x: x.upper()
         )
 
-        #
         return True
 
     #
@@ -287,10 +281,8 @@ class GameServer:
         if self._debug:
             pp({"rules": rules})
 
-        #
         self.sv_tags = rules.get("sv_tags", "").split(",")
 
-        #
         return True
 
 

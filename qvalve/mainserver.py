@@ -25,8 +25,6 @@ class MainServer:
 
     """
 
-    # pylint: disable=too-few-public-methods
-
     def __init__(self, max_threads=10, debug=False, rules=False):
         """Initialize MainServer."""
 
@@ -70,9 +68,9 @@ class MainServer:
         servers = []
 
         for region in regions:
-
             if not isinstance(region, gs.MSRegion):
-                region = gs.MSRegion(int(region))
+                # PLW2901: region is coerced from raw input to MSRegion enum if not already one.
+                region = gs.MSRegion(int(region))  # noqa: PLW2901
             kwargs["region"] = region
             logger.debug(kwargs)
 
@@ -101,7 +99,6 @@ class MainServer:
     # -------------------------------------------------------------------------------
 
     def _a2s_worker(self):
-
         while True:
             try:
                 gameserver = self._workq.get()

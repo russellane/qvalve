@@ -129,11 +129,9 @@ def _filter_stage2(args, servers):
 
 
 def _print_gameservers(args, servers):
-
     lastmap = None
 
     for server in [x for x in servers if x.map_name]:
-
         if lastmap and lastmap != server.map_name:
             print("-" * 150)
         lastmap = server.map_name
@@ -184,7 +182,6 @@ def _print_gameservers(args, servers):
 
 
 def _print_keywords_report(servers):
-
     nplayers = defaultdict(int)
     nservers = defaultdict(int)
 
@@ -205,7 +202,7 @@ def _print_keywords_report(servers):
     print(f"Top {count} nplayers, nservers")
     _a = sorted(nplayers.items(), key=lambda _: _[1], reverse=True)[:count]
     _b = sorted(nservers.items(), key=lambda _: _[1], reverse=True)[:count]
-    for _ in zip(_a, _b):
+    for _ in zip(_a, _b, strict=False):
         print(f"{str(_[0]):30} {str(_[1]):30}")
 
 

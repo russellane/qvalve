@@ -22,7 +22,7 @@ def run_web_server(args):
 
     try:
         app.run(host="0.0.0.0")
-    except Exception as err:  # pylint: disable=broad-except
+    except Exception as err:
         logger.critical(f"flask app failed {err}")
 
 
@@ -38,15 +38,17 @@ def _create_app(config=None):
         app.config.update(config)
 
     with app.app_context():
-        # pylint: disable=import-outside-toplevel
-        from flask_babel import Babel
+        # PLC0415: Flask app factory pattern requires deferred imports inside app context.
+        from flask_babel import Babel  # noqa: PLC0415
 
         _ = Babel(app)
-        from flask_bootstrap import Bootstrap
+        # PLC0415: Flask app factory pattern requires deferred imports inside app context.
+        from flask_bootstrap import Bootstrap  # noqa: PLC0415
 
         _ = Bootstrap(app)
 
-        import qvalve.flaskapp.routes
+        # PLC0415: Flask app factory pattern requires deferred imports inside app context.
+        import qvalve.flaskapp.routes  # noqa: PLC0415
 
         app.register_blueprint(qvalve.flaskapp.routes.bp)
         return app

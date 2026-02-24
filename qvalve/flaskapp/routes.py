@@ -5,9 +5,8 @@ import time
 from pathlib import Path
 
 import pandas as pd
-from flask import Blueprint
+from flask import Blueprint, render_template, request
 from flask import current_app as app
-from flask import render_template, request
 from loguru import logger
 
 import qvalve.flaskapp.forms
@@ -46,9 +45,9 @@ _MAIN_SERVER = None
 
 
 def _search(form):
-
     try:
-        global _MAIN_SERVER  # pylint: disable=global-statement
+        # PLW0603: _MAIN_SERVER is a module-level singleton lazily initialized on first request.
+        global _MAIN_SERVER  # noqa: PLW0603
         if not _MAIN_SERVER:
             _MAIN_SERVER = qvalve.mainserver.MainServer(
                 max_threads=form.max_threads.data,
@@ -76,7 +75,6 @@ def _search(form):
 
 
 def _get_query_filters(form):
-
     filters = {"appid": form.appid.data}
 
     for key, value in [
@@ -104,7 +102,6 @@ def _get_query_filters(form):
 
 
 def _apply_post_query_filters(form, dataframe):
-
     if form.map_prefix.data:
         dataframe = dataframe[dataframe.map_name.str.startswith(form.map_prefix.data)]
 
@@ -167,11 +164,11 @@ def connect(addr):
         print(
             "\n".join(
                 [
-                    f'echo {tag}{"-" * 40}',
+                    f"echo {tag}{'-' * 40}",
                     f"echo {tag}{script_name}",
                     f"echo {tag}{time.asctime()}",
-                    f'echo {tag}{request.args.get("server_name")}',
-                    f'echo {tag}{request.args.get("map_name")}',
+                    f"echo {tag}{request.args.get('server_name')}",
+                    f"echo {tag}{request.args.get('map_name')}",
                     f"connect {addr}",
                 ]
             ),
@@ -191,8 +188,8 @@ def connect(addr):
 def show_players(addr):
     """Show players on server at `addr`."""
 
-    logger.debug(f'server_name={request.args.get("server_name")}')
-    logger.debug(f'map_name={request.args.get("map_name")}')
+    logger.debug(f"server_name={request.args.get('server_name')}")
+    logger.debug(f"map_name={request.args.get('map_name')}")
     logger.debug(f"addr={addr!r}")
 
     server = qvalve.gameserver.GameServer(addr)

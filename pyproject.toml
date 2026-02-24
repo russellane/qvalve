@@ -1,6 +1,6 @@
 [project]
 name = "qvalve"
-version = "1.0.6"
+version = "1.0.7"
 description = "Query Valve Main and Game Servers"
 authors = [
     {name = "Russel Lane", email = "russel@rlane.com"},
@@ -23,7 +23,7 @@ dependencies = [
     "flask>=3.1.0",
     "loguru>=0.7.2",
     "pandas>=2.2.3",
-    "rlane-libcli>=1.0.10",
+    "rlane-libcli>=1.0.12",
     "steam>=1.4.4",
     "wtforms>=3.2.1",
 ]
@@ -36,51 +36,61 @@ qvalve = "qvalve.cli:main"
 
 [dependency-groups]
 dev = [
-    "black>=24.10.0",
-    "flake8-bugbear>=24.12.12",
-    "flake8-pydocstyle>=0.2.5",
-    "flake8-pylint>=0.2.1",
-    "flake8-pytest-style>=2.1.0",
-    "flake8-simplify>=0.21.0",
-    "flake8>=7.1.1",
-    "isort>=5.13.2",
     "pytest-cov>=6.0.0",
     "pytest>=8.3.4",
+    "ruff>=0.6.9",
 ]
 
 [tool.coverage.run]
 omit = ["qvalve/__main__.py"]
 
-[tool.black]
-line-length = "97"
+[tool.coverage.report]
+fail_under = 47
 
-[tool.isort]
-line_length = "97"
-profile = "black"
+[tool.ruff]
+line-length = 97
 
-[tool.pylint.format]
-max-line-length = "97"
-
-[tool.pylint.messages_control]
-enable = [
-    "useless-suppression",
+[tool.ruff.lint]
+select = [
+    # pyflakes: undefined names, unused imports, redefined variables
+    "F",
+    # pycodestyle: PEP 8 style errors
+    "E",
+    # pycodestyle: PEP 8 style warnings
+    "W",
+    # flake8-bugbear: likely bugs and design problems
+    "B",
+    # pydocstyle: docstring style and completeness (google convention)
+    "D",
+    # pylint: errors, warnings, refactoring hints, conventions
+    "PL",
+    # flake8-pytest-style: pytest usage best practices
+    "PT",
+    # flake8-simplify: code patterns that can be simplified
+    "SIM",
+    # isort: import sorting and grouping
+    "I",
 ]
-fail-on = [
-    # useless-suppression
-    "I0021",
-]
-
-good-names = [
-    "k", "v",
-]
-
-[tool.pydocstyle]
-convention = "google"
-add-ignore = [
-    # "D105",     # pep257 numpy google   # Missing docstring in magic method
+ignore = [
+    # formatter: whitespace before ':'
+    "E203",
+    # pydocstyle: missing docstring in magic method
     "D105",
-    # "D202",     # pep257 numpy google   # No blank lines allowed after function docstring
+    # pydocstyle: no blank lines allowed after function docstring
     "D202",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+    # pydocstyle: skip all docstring checks
+    "D",
+    # pylint convention: skip convention checks
+    "PLC",
+    # pylint: magic value used in comparison
+    "PLR2004",
 ]
 
 [build-system]

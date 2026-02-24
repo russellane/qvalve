@@ -3,7 +3,6 @@
 .coverage
 .junk/
 .pdm-python
-.pytest_cache/
 .venv/
 __pycache__/
 dist/
